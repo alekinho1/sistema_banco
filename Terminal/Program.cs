@@ -8,61 +8,79 @@ namespace Terminal
         static void Main(string[] args)
         {
 
-            //Cria um objeto do tipo Validação da Biblioteca Util
-            // Validacao validacao = new Validacao();
+            string opcao = "";
+            do
+            {
+                Console.WriteLine("Escolha uma opção: ");
+                System.Console.WriteLine("1 - Cadastrar Conta");
+                System.Console.WriteLine("2 - Sacar");
+                System.Console.WriteLine("3 - Depositar");
+                System.Console.WriteLine("9 - Sair");
 
-            // //Declaração de variáveis
-            // bool cpfvalido = false;
-            // string cpf = "";
+                opcao = Console.ReadLine();
 
-            // do
-            // {
-            //     //Pede o cpf para o usuário
-            //     Console.WriteLine("Informe seu cpf");
-            //     //Recebe o cpf do usuário
-            //     cpf = Console.ReadLine();
-                
-            //     //Recebe o retorno do metodo Validar Cpf
-            //     cpfvalido = validacao.ValidarCPF(cpf);
+                switch (opcao)
+                {
+                    case "1":
+                        {
+                            CadastrarConta();
+                            break;
+                        }
 
-            //     //Caso seja um cpf inválido informa ao usuário
-            //     if(cpfvalido == false){
-            //         Console.WriteLine("Cpf inválido");
-            //     }
+                    case "2":
+                        {
+                            break;
+                        }
+
+                    case "3":
+                        {
+                            break;
+                        }
+                }
+
+            } while (opcao != "9");
 
 
-            // } while (cpfvalido == false);// Faça enquanto cpf inválido
 
-            // Console.WriteLine("Cpf válido");
-            /*
-            //Cria o objeto do tipo Conta e instancia
-            Conta conta = new Conta();
-            
-            //Deposita o valor na conta
-            conta.Depositar(100.00);
 
-            //Mostra o saldo para o usuário
-            Console.WriteLine("Seu saldo é: " + conta.Saldo);
+        }
 
-            conta.Depositar(100.00);
+        static void CadastrarConta()
+        {
+            System.Console.WriteLine("Digite a Razão Social ");
+            string razaosocial = Console.ReadLine();
 
-            //Mostra o saldo para o usuário
-            Console.WriteLine("Seu saldo é: " + conta.Saldo);
+            System.Console.WriteLine("Digite a Data de Abertura ");
+            string dataabertura = Console.ReadLine();
 
-            conta.Sacar(50.00);
+            Validacao validacao = new Validacao();
+            bool cnpjvalido = false;
 
-            //Mostra o saldo para o usuário
-            Console.WriteLine("Seu saldo é: " + conta.Saldo);
-             */
+            do
+            {
+                System.Console.WriteLine("Digite o CNPJ");
+                string cnpj = Console.ReadLine();
+                cnpjvalido = validacao.ValidarCNPJ(cnpj);
 
-            ContaPessoaFisica contapf = new ContaPessoaFisica() ;
-            contapf.Sacar(50.00);
-                        
-            //Mostra o saldo para o usuário
-            Console.WriteLine("Seu saldo é: " + contapf.Saldo);
+                if (cnpjvalido == true)
+                {
+                    System.Console.WriteLine("CNPJ Válido!");
+                }
+                else
 
-            contapf.Depositar(100000000.00);
-            Console.WriteLine("Seu saldo é: " + contapf.Saldo);
+                    System.Console.WriteLine("CNPJ Falso");
+
+            } while (cnpjvalido != true);
+
+            System.Console.WriteLine("Digite seu número de conta");
+            string numeroconta = Console.ReadLine();
+
+            System.Console.WriteLine("Digite a conta");
+            string conta = Console.ReadLine();
+
+            System.Console.WriteLine("Digite o saldo");
+            double saldo = Convert.ToDouble(Console.ReadLine());
+
         }
     }
 }
